@@ -185,9 +185,7 @@ RUN --mount=type=cache,dst=/var/cache \
     dnf5 -y remove \
         ublue-os-update-services \
         firefox \
-        firefox-langpacks \
-        toolbox \
-        htop && \
+        firefox-langpacks && \
     /ctx/cleanup
 
 # Install new packages
@@ -378,8 +376,6 @@ RUN --mount=type=cache,dst=/var/cache \
             plasma-welcome-fedora \
             plasma-discover-kns \
             kcharselect \
-            kde-partitionmanager \
-            plasma-discover \
             konsole && \
         sed -i '/<entry name="launchers" type="StringList">/,/<\/entry>/ s/<default>[^<]*<\/default>/<default>preferred:\/\/browser,applications:steam.desktop,applications:net.lutris.Lutris.desktop,applications:org.gnome.Ptyxis.desktop,applications:io.github.kolunmi.Bazaar.desktop,preferred:\/\/filemanager<\/default>/' /usr/share/plasma/plasmoids/org.kde.plasma.taskmanager/contents/config/main.xml && \
         sed -i 's@\[Desktop Action new-window\]@\[Desktop Action new-window\]\nX-KDE-Shortcuts=Ctrl+Alt+T@g' /usr/share/applications/org.gnome.Ptyxis.desktop && \

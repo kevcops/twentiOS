@@ -196,6 +196,40 @@ install-emudeck:
 [group("hardware")]
 install-openrgb: (_install_appimage_file "https://codeberg.org/OpenRGB/OpenRGB/releases/download/release_candidate_1.0rc2/OpenRGB_1.0rc2_x86_64_0fca93e.AppImage")
 
+# Toggle default app store between Bazaar and KDE Discover
+[group("apps")]
+switchappstore:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    source /usr/lib/ujust/ujust.sh
+
+    file="/etc/xdg/mimeapps.list"
+    key="application/vnd.flatpak.ref"
+    bazaar="io.github.kolunmi.Bazaar.desktop"
+    discover="org.kde.discover.desktop"
+
+    if ! grep -q "^\\[Default Applications\\]" "$file" 2>/dev/null; then
+        echo "Creating [Default Applications] in $file"
+        echo "[Default Applications]" | sudo tee -a "$file" >/dev/null
+    fi
+
+    current="$(grep -E \"^${key}=\" \"$file\" 2>/dev/null | tail -n 1 | cut -d= -f2- || true)"
+    if [[ \"$current\" == \"$bazaar\" ]]; then
+        target=\"$discover\"
+        label=\"KDE Discover\"
+    else
+        target=\"$bazaar\"
+        label=\"Bazaar\"
+    fi
+
+    if grep -q -E \"^${key}=\" \"$file\" 2>/dev/null; then
+        sudo sed -i -E \"s|^${key}=.*|${key}=${target}|\" \"$file\"
+    else
+        echo \"${key}=${target}\" | sudo tee -a \"$file\" >/dev/null
+    fi
+
+    echo \"Default app store set to ${label}. Log out/in if it doesn't apply immediately.\"
+
 # Install Boxtron, a Steam Play compatibility tool to run DOS games using native Linux DOSBox
 [group("gaming")]
 install-boxtron: distrobox-check-fedora

@@ -1,2 +1,8 @@
 [Default Applications]
 application/vnd.flatpak.ref=io.github.kolunmi.Bazaar.desktop
+text/html=org.chromium.Chromium.desktop
+application/xhtml+xml=org.chromium.Chromium.desktop
+x-scheme-handler/http=org.chromium.Chromium.desktop
+x-scheme-handler/https=org.chromium.Chromium.desktop
+x-scheme-handler/about=org.chromium.Chromium.desktop
+x-scheme-handler/unknown=org.chromium.Chromium.desktop

@@ -53,13 +53,13 @@ Common variant available as `twentios`, suitable for desktop computers.
 Rebase from an existing upstream Fedora Atomic to this image:
 
 ```bash
-rpm-ostree rebase ostree-unverified-registry:ghcr.io/your-org/twentios:stable
+rpm-ostree rebase ostree-unverified-registry:ghcr.io/kevcops/twentios:stable
 ```
 
 or for devices with Nvidia GPUs:
 
 ```bash
-rpm-ostree rebase ostree-unverified-registry:ghcr.io/your-org/twentios-nvidia:stable
+rpm-ostree rebase ostree-unverified-registry:ghcr.io/kevcops/twentios-nvidia:stable
 ```
 
 **For users with Secure Boot enabled:** Follow our [secure boot documentation](#secure-boot) prior to rebasing.
@@ -71,13 +71,13 @@ KDE Plasma is the default desktop variant. It is provided as its own image, so t
 Rebase from an existing upstream Fedora Atomic to the KDE Plasma image:
 
 ```bash
-rpm-ostree rebase ostree-unverified-registry:ghcr.io/your-org/twentios:stable
+rpm-ostree rebase ostree-unverified-registry:ghcr.io/kevcops/twentios:stable
 ```
 
 or for devices with Nvidia GPUs:
 
 ```bash
-rpm-ostree rebase ostree-unverified-registry:ghcr.io/your-org/twentios-nvidia:stable
+rpm-ostree rebase ostree-unverified-registry:ghcr.io/kevcops/twentios-nvidia:stable
 ```
 
 **For users with Secure Boot enabled:** Follow our [secure boot documentation](#secure-boot) prior to rebasing.
@@ -95,13 +95,13 @@ Builds with the GNOME desktop environment are available in desktop flavors. Thes
 Rebase from an existing upstream Fedora Atomic to this image:
 
 ```bash
-rpm-ostree rebase ostree-unverified-registry:ghcr.io/your-org/twentios-gnome:stable
+rpm-ostree rebase ostree-unverified-registry:ghcr.io/kevcops/twentios-gnome:stable
 ```
 
 To rebase an existing ostree system to the GNOME release with proprietary NVIDIA drivers:
 
 ```bash
-rpm-ostree rebase ostree-unverified-registry:ghcr.io/your-org/twentios-gnome-nvidia:stable
+rpm-ostree rebase ostree-unverified-registry:ghcr.io/kevcops/twentios-gnome-nvidia:stable
 ```
 
 **For users with Secure Boot enabled:** Follow our [secure boot documentation](#secure-boot) prior to rebasing.
@@ -134,12 +134,26 @@ Updates are delivered frequently from upstream Fedora and Universal Blue, and ro
 
 Internal documentation should live alongside this repository. If you maintain external docs, link them here.
 
+Repository:
+
+```text
+https://github.com/kevcops/twentiOS
+```
+
+### App Store Toggle
+
+You can switch the default Flatpak app store between Bazaar and KDE Discover:
+
+```bash
+ujust switchappstore
+```
+
 ## Verification
 
 Images are signed with sigstore's `cosign`. You can verify a signature by downloading the public key from this repo and running:
 
 ```bash
-cosign verify --key cosign.pub ghcr.io/your-org/twentios
+cosign verify --key cosign.pub ghcr.io/kevcops/twentios
 ```
 
 ## Secure Boot

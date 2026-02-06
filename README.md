@@ -5,6 +5,7 @@ TwentiOS is an internal, company-focused fork of Bazzite, built on Fedora Atomic
 ## Table of Contents
 - [About \& Features](#about--features)
   - [Desktop](#desktop)
+  - [KDE Plasma](#kde-plasma)
   - [GNOME](#gnome)
   - [Features from Upstream](#features-from-upstream)
     - [Universal Blue](#universal-blue)
@@ -50,6 +51,24 @@ TwentiOS is built from `ublue-os/main` and `ublue-os/nvidia` using Fedora techno
 Common variant available as `twentios`, suitable for desktop computers.
 
 Rebase from an existing upstream Fedora Atomic to this image:
+
+```bash
+rpm-ostree rebase ostree-unverified-registry:ghcr.io/your-org/twentios:stable
+```
+
+or for devices with Nvidia GPUs:
+
+```bash
+rpm-ostree rebase ostree-unverified-registry:ghcr.io/your-org/twentios-nvidia:stable
+```
+
+**For users with Secure Boot enabled:** Follow our [secure boot documentation](#secure-boot) prior to rebasing.
+
+### KDE Plasma
+
+KDE Plasma is the default desktop variant. It is provided as its own image, so the choice between KDE and GNOME is made by rebasing to the corresponding image tag.
+
+Rebase from an existing upstream Fedora Atomic to the KDE Plasma image:
 
 ```bash
 rpm-ostree rebase ostree-unverified-registry:ghcr.io/your-org/twentios:stable
